@@ -34,16 +34,18 @@ import static org.assertj.core.api.Assertions.assertThat;
  */
 class ValidatorTests {
 
-	pre Validator createValidator() {
+	private Validator createValidator() {
 		LocalValidatorFactoryBean localValidatorFactoryBean = new LocalValidatorFactoryBean();
 		localValidatorFactoryBean.afterPropertiesSet();
 		return localValidatorFactoryBean;
+	}
+
 	@Test
-	vd shouldNotValidateWhenFirstNameEmpty() {
+	void shouldNotValidateWhenFirstNameEmpty() {
 
 		LocaleContextHolder.setLocale(Locale.ENGLISH);
 		Person person = new Person();
-		n.setFirstName("");
+		person.setFirstName("");
 		person.setLastName("smith");
 
 		Validator validator = createValidator();
